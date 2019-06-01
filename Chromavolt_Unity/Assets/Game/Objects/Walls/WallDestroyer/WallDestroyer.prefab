@@ -323,7 +323,7 @@ MonoBehaviour:
   EndPosition: {x: 0, y: 0, z: 0}
   Generations: 8
   Duration: 0.03
-  ChaosFactor: 0.004
+  ChaosFactor: 0.002
   ManualMode: 0
   Rows: 1
   Columns: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
   EndPosition: {x: 0, y: 0, z: 0}
   Generations: 8
   Duration: 0.03
-  ChaosFactor: 0.004
+  ChaosFactor: 0.002
   ManualMode: 0
   Rows: 1
   Columns: 1
@@ -367,7 +367,7 @@ MonoBehaviour:
   EndPosition: {x: 0, y: 0, z: 0}
   Generations: 8
   Duration: 0.03
-  ChaosFactor: 0.004
+  ChaosFactor: 0.002
   ManualMode: 0
   Rows: 1
   Columns: 1

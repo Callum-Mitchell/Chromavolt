@@ -224,6 +224,8 @@ GameObject:
   - component: {fileID: 4570507624188462}
   - component: {fileID: 114214294997671346}
   - component: {fileID: 114128835746499260}
+  - component: {fileID: 54163360328163722}
+  - component: {fileID: 135811666984548208}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1389,6 +1391,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1839481526912420}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54163360328163722
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347502249028768}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114026020104279946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1458,6 +1475,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fl_speedMultiplier: 0.5
+  lightning:
+    orbSurrounders:
+    - {fileID: 1302431027663218}
+    - {fileID: 1373593303402190}
+    - {fileID: 1983176110986888}
+    - {fileID: 1470784871633664}
+    - {fileID: 1633387015501674}
+    - {fileID: 1260119078027776}
+    - {fileID: 1751538514118592}
+    - {fileID: 1772378466811446}
+    - {fileID: 1760043855879130}
+    - {fileID: 1866748323350470}
+    - {fileID: 1002812328481488}
+    - {fileID: 1066751393633086}
+    orbCrossers:
+    - {fileID: 1588592888869530}
+    - {fileID: 1595682274701926}
+    positiveStateColor: {r: 0, g: 0, b: 0, a: 0}
+    negativeStateColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114222346298492398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3021,4 +3057,16 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135811666984548208
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347502249028768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}

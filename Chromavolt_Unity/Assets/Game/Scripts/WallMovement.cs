@@ -15,8 +15,9 @@ using UnityEngine;
 public class WallMovement : MonoBehaviour {
 
     private Transform wall;
-    public float zSpeed = -0.5f;
+    public float ySpeed = -0.5f;
     public float xSpeed = 0.0f;
+    private const float globalSpeedScale = 0.2f;
 
     public bool isScreenClamped = true; //set false for permanent objects
 
@@ -55,16 +56,16 @@ public class WallMovement : MonoBehaviour {
             xSpeed = -xSpeed;
         }
 
-        if (wall.position.z < min_zPos || wall.position.z > max_zPos)
+        if (wall.position.y < min_zPos || wall.position.y > max_zPos)
         {
-            zSpeed = -zSpeed;
+            ySpeed = -ySpeed;
         }
 
-        wall.position += new Vector3(xSpeed, 0.0f, zSpeed);
+        wall.position += new Vector3(xSpeed * globalSpeedScale, ySpeed * globalSpeedScale, 0.0f);
 
         if (isScreenClamped) {
 
-            if (wall.position.z <= -60) {
+            if (wall.position.y <= -60) {
                 Destroy(gameObject);
             }
 

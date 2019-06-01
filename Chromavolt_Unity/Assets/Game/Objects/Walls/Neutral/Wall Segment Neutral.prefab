@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33081948011754290}
   - component: {fileID: 65123319844319040}
   - component: {fileID: 23465467809011442}
+  - component: {fileID: 114958909693319080}
   m_Layer: 0
   m_Name: Wall Segment Neutral
-  m_TagString: Untagged
+  m_TagString: NeutralWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,11 +122,30 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260123874599562}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114958909693319080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260123874599562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89f1f0833843e648b69e604e71031a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ySpeed: -0.1
+  xSpeed: 0
+  isScreenClamped: 1
+  min_xPos: -72
+  max_xPos: 72
+  min_zPos: -100
+  max_zPos: 100
+  wallLifetime: 600
 --- !u!198 &198437045638089820
 ParticleSystem:
   m_ObjectHideFlags: 1

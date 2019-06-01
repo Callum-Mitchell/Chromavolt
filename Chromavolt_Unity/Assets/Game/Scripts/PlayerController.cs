@@ -24,6 +24,18 @@ public class PlayerController : MonoBehaviour {
 
     private static bool bl_isPositiveState = true;
 
+    //Child objects
+    //Visual effects
+    [System.Serializable]
+    public struct LightningRenderer
+    {
+        public GameObject[] orbSurrounders;
+        public GameObject[] orbCrossers;
+        public Color positiveStateColor;
+        public Color negativeStateColor;
+    }
+
+    public LightningRenderer lightning;
 
     IEnumerator flipPlayer(bool bl_isTargetStatePositive) {
 
