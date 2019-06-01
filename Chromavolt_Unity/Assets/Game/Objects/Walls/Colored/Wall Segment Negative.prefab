@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 65236183259711832}
   - component: {fileID: 114918701769544254}
   m_Layer: 0
-  m_Name: Wall Segment State B
+  m_Name: Wall Segment Negative
   m_TagString: NegativeWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

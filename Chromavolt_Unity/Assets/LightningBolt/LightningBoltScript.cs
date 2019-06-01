@@ -354,5 +354,13 @@ namespace DigitalRuby.LightningBolt
                 }
             }
         }
+
+        public void updateRenderColors(Color startColor, Color endColor)
+        {
+
+            lineRenderer.SetColors(startColor, endColor);
+
+            Columns = 5;
+        }
     }
 }

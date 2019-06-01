@@ -115,7 +115,7 @@ public class MasterSpawner : MonoBehaviour {
     public void Reset() {
 
         fl_spawnIndices = getSpawnIndices();
-        maxIndex = fl_spawnIndices[spawnerSet.Length - 1];
+        //maxIndex = fl_spawnIndices[spawnerSet.Length - 1];
 
         int_framesUntilSpawn = int_levelStartDelay; //gives a brief (adjustable) window upon starting a level before spawning anything
         bl_isCallingWave = false;

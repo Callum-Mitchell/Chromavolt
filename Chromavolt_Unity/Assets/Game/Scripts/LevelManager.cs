@@ -9,16 +9,21 @@ public class LevelManager : MonoBehaviour {
     public static bool gameIsActive = true;
     public static bool isResettingLevel = false;
     public static bool isSwitchingLevels = false;
+    //Determines the colors of lightning/particle effects corresponding to each state
+    public static Color positiveStateColor;
+    public static Color negativeStateColor;
+    public Color setPositiveStateColor;
+    public Color setNegativeStateColor;
 
     public int levelID = 1; //used only on "level" type scenes 
 
-    public GameObject player;
-    public GameObject leftPlayerClone;
-    public GameObject rightPlayerClone;
+    public GameObject[] players;
 
     public GameObject timer;
     public GameObject levelRanking;
     public GameObject masterSpawner;
+
+
 
     //The type of the current level will determine which others to load, etcetera
     [HideInInspector]
@@ -63,9 +68,10 @@ public class LevelManager : MonoBehaviour {
         //This WaitForFixedUpdate yield gives other affected objects a chance to detect a reset via isResettingLevel
         yield return new WaitForFixedUpdate();
 
-        player.GetComponent<PlayerController>().Reset();
-        leftPlayerClone.GetComponent<PlayerController>().Reset();
-        rightPlayerClone.GetComponent<PlayerController>().Reset();
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<PlayerController>().Reset();
+        }
         timer.GetComponent<TimerController>().Reset();
         levelRanking.GetComponent<LevelRankingText>().Reset();
         masterSpawner.GetComponent<MasterSpawner>().Reset();
@@ -110,6 +116,8 @@ public class LevelManager : MonoBehaviour {
 
     // Initialization. Will be called when a loaded scene is activated (preloaded scenes are designed to start out inactive)
     void Awake () {
+        positiveStateColor = setPositiveStateColor;
+        negativeStateColor = setNegativeStateColor;
         Reset();
     }
 	
@@ -117,7 +125,9 @@ public class LevelManager : MonoBehaviour {
 		if(!gameIsActive) {
             TriggerLoss();
         }
-	}
+        //TODO: modulating colors - update the colors for positive/negative state here
+
+    }
 
     //Will continue to be called even after time has frozen
     void Update () {
