@@ -1,12 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chromavolt_Unity", "Chromavolt_Unity.csproj", "{B689C742-A59C-10D7-2175-758F301A5E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chromavolt_Unity.Editor", "Chromavolt_Unity.Editor.csproj", "{80B8FB64-2287-E5D9-570A-9650596271C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B689C742-A59C-10D7-2175-758F301A5E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B689C742-A59C-10D7-2175-758F301A5E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B689C742-A59C-10D7-2175-758F301A5E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B689C742-A59C-10D7-2175-758F301A5E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80B8FB64-2287-E5D9-570A-9650596271C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B8FB64-2287-E5D9-570A-9650596271C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B8FB64-2287-E5D9-570A-9650596271C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B8FB64-2287-E5D9-570A-9650596271C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
