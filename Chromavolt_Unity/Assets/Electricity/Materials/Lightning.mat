@@ -30,10 +30,10 @@ Material:
     - _BumpAmt: 10
     - _GlowIntensity: 5
     - _GlowSpread: 5
-    - _SparkDist: -0.07462686
-    - _SparkMag: 6.9104486
-    - _SparkWidth: 0.46183583
-    - _StartSeed: 0
+    - _SparkDist: 1
+    - _SparkMag: 5.9
+    - _SparkWidth: 0.349
+    - _StartSeed: 2
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ObjectScale: {r: 1, g: 1, b: 1, a: 1}
