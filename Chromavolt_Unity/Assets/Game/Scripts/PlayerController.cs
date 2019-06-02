@@ -117,12 +117,9 @@ public class PlayerController : MonoBehaviour {
     public void Reset() {
         fl_playerSpeed = 0;
 
-        PlayerTransform = transform; //gameObject.GetComponent<Transform>();
-                                     //resets the player's world rotation to 0
+        //Reset the player's world rotation
         playerTargetEulerAngles = playerAnglesStatePositive;
         PlayerTransform.eulerAngles = playerTargetEulerAngles;
-        playerAnglesStatePositive = playerTargetEulerAngles;
-        playerAnglesStateNegative = playerTargetEulerAngles + new Vector3(0, 180, 0);
         foreach (GameObject bolt in lightning.orbCrossers)
         {
             bolt.GetComponent<LightningBoltScript>().updateRenderColors(lightning.positiveStateColor, lightning.positiveStateColor);
@@ -161,7 +158,20 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Reset();
+
+        fl_playerSpeed = 0;
+
+        PlayerTransform = transform;
+        playerTargetEulerAngles = playerAnglesStatePositive;
+        PlayerTransform.eulerAngles = playerTargetEulerAngles;
+        playerAnglesStatePositive = playerTargetEulerAngles;
+        playerAnglesStateNegative = playerTargetEulerAngles + new Vector3(0, 180, 0);
+
+        bl_isFlipping = false;
+        bl_isFlipAxisInUse = false;
+
+        bl_isPositiveState = true;
+        int_flipFrames = 0;
     }
 
     /* Update is called once per frame rendered, no matter what.
