@@ -71,6 +71,9 @@ public class MasterSpawner : MonoBehaviour {
             prevIndex = fl_spawnIndices[spawnerID - 1];
         }
 
+
+        //Forget the binary search for now. Just do something simple that works.
+
         //perform a binary search to determine which spawner to call
         do {
             if(prevIndex >= generatedIndex) {
@@ -107,7 +110,7 @@ public class MasterSpawner : MonoBehaviour {
             }
 
 
-        } while (prevIndex >= generatedIndex || currentIndex < generatedIndex);
+        } while (prevIndex >= generatedIndex || currentIndex < generatedIndex );
 
         return spawnerID;
     }
@@ -115,7 +118,7 @@ public class MasterSpawner : MonoBehaviour {
     public void Reset() {
 
         fl_spawnIndices = getSpawnIndices();
-        //maxIndex = fl_spawnIndices[spawnerSet.Length - 1];
+        maxIndex = fl_spawnIndices[spawnerSet.Length - 1];
 
         int_framesUntilSpawn = int_levelStartDelay; //gives a brief (adjustable) window upon starting a level before spawning anything
         bl_isCallingWave = false;

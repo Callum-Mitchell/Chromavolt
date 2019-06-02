@@ -25,7 +25,7 @@ public class WaveSpawner : MonoBehaviour {
     }
 
 
-    /* SpawnIDData is an important class for wave design. The length of the class instance array
+    /* SpawnIDElementSelection is an important class for wave design. The length of the class instance array (WaveIDSetElementSelection)
      * determines the length of the wave in # of spawns (the index of this refers to the spawnID).
      * The values of ElementSet determine which elements of EnemyWaveSelection could possibly be
      * spawned for the given index of . None of the

@@ -9,7 +9,7 @@ public class TimerController : MonoBehaviour {
 
     public void Reset() {
         time_secs = 0.0f;
-        GetComponent<Text>().text = "00.00";
+        GetComponent<Text>().text = "00.0";
     }
 
     // Use this for initialization
@@ -22,7 +22,7 @@ public class TimerController : MonoBehaviour {
     void FixedUpdate () {
 
         time_secs += Time.deltaTime;
-        GetComponent<Text>().text = time_secs.ToString(format: "0#.##");
+        GetComponent<Text>().text = time_secs.ToString(format: "0#.#");
 
 	}
 }

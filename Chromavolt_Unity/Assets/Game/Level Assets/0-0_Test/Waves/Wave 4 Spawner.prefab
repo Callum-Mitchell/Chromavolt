@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1621991303362368}
+  m_IsPrefabParent: 1
+--- !u!1 &1621991303362368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4713608472127254}
+  - component: {fileID: 114573993486887792}
+  m_Layer: 0
+  m_Name: Wave 4 Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4713608472127254
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621991303362368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114573993486887792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621991303362368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5201d12a863740446a57ddf8e6b14dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaveIDSetElementSelection:
+  - WaveElementSet: 000000000100000002000000030000000400000005000000
+  - WaveElementSet: 000000000100000002000000030000000400000005000000
+  - WaveElementSet: 000000000100000002000000030000000400000005000000
+  - WaveElementSet: 000000000100000002000000030000000400000005000000
+  - WaveElementSet: 000000000100000002000000030000000400000005000000
+  - WaveElementSet: 000000000100000002000000030000000400000005000000
+  EnemyWaveSelection:
+  - WaveObject: {fileID: 1169951232915460, guid: d8f35ff3992745249a6fff45e36554f4,
+      type: 2}
+    spawnPosition: {x: 0, y: 11, z: 0}
+    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
+    postSpawnDelay: 40
+  - WaveObject: {fileID: 1176963106604524, guid: 77904bb9932b31948b5ad03aa0438cb7,
+      type: 2}
+    spawnPosition: {x: 0, y: 11, z: 0}
+    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
+    postSpawnDelay: 40
+  - WaveObject: {fileID: 1338969312850810, guid: 56bac3fdc144a4c478d86798bec3eecc,
+      type: 2}
+    spawnPosition: {x: 0, y: 11, z: 0}
+    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
+    postSpawnDelay: 40
+  - WaveObject: {fileID: 1302331367788080, guid: ac4d996a1e9e28d4595d53108c34cf4e,
+      type: 2}
+    spawnPosition: {x: 0, y: 11, z: 0}
+    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
+    postSpawnDelay: 40
+  - WaveObject: {fileID: 1684416500537600, guid: 26d47dddf7322e64c89ae02be0b857c0,
+      type: 2}
+    spawnPosition: {x: 0, y: 11, z: 0}
+    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
+    postSpawnDelay: 40
+  - WaveObject: {fileID: 1578163161708270, guid: 138dfe1a68b23f442a509797831b7ca0,
+      type: 2}
+    spawnPosition: {x: 0, y: 11, z: 0}
+    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
+    postSpawnDelay: 40

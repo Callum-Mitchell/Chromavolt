@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
     //TODO: clarify the differences between these two values
     private bool bl_isFlipping = false;
     private bool bl_isFlipAxisInUse = false;
+    private bool bl_breakFlip = false;
 
     private bool bl_isPositiveState = true;
 
@@ -43,24 +44,13 @@ public class PlayerController : MonoBehaviour {
         //Temporarily make the orb-crossing bolts invisible
         foreach (GameObject bolt in lightning.orbCrossers)
         {
-            LineRenderer lightningRenderer = bolt.GetComponent<LineRenderer>();
-            lightningRenderer.material = new Material(lightningRenderer.material);
             bolt.GetComponent<LightningBoltScript>().updateRenderColors(Color.clear, Color.clear);
             bolt.GetComponent<LightningBoltScript>().UpdateFromMaterialChange();
-
-            //lightningRenderer.startColor = new Color(0, 0, 0, 0);
-            //lightningRenderer.endColor = new Color(0, 0, 0, 0);
-            //Gradient gradient = new Gradient();
-            //gradient.SetKeys(
-            //    new GradientColorKey[] { new GradientColorKey(Color.clear, 0.0f), new GradientColorKey(Color.clear, 1.0f) },
-            //    new GradientAlphaKey[] { new GradientAlphaKey(0, 0.0f), new GradientAlphaKey(0, 1.0f) }
-            //);
-            //lightningRenderer.colorGradient = gradient;
         }
 
         for (int_flipFrames = 0; int_flipFrames < int_FLIP_DURATION; int_flipFrames++) {
 
-            playerTargetEulerAngles = new Vector3(playerTargetEulerAngles.x, playerTargetEulerAngles.y + 180.0f / int_FLIP_DURATION, playerTargetEulerAngles.z);
+            playerTargetEulerAngles = new Vector3(playerTargetEulerAngles.x, playerTargetEulerAngles.y + 180f / int_FLIP_DURATION, playerTargetEulerAngles.z);
             float flipProportion = ((float)int_flipFrames / int_FLIP_DURATION);
             Color intermediateColor;
             if (bl_isTargetStatePositive)
@@ -73,43 +63,40 @@ public class PlayerController : MonoBehaviour {
             }
             foreach (GameObject bolt in lightning.orbSurrounders)
             {
-                LineRenderer lightningRenderer = bolt.GetComponent<LineRenderer>();
-                lightningRenderer.material = new Material(lightningRenderer.material);
                 bolt.GetComponent<LightningBoltScript>().updateRenderColors(intermediateColor, intermediateColor);
                 bolt.GetComponent<LightningBoltScript>().UpdateFromMaterialChange();
             }
 
             yield return new WaitForFixedUpdate();
-        }
-
-        if (bl_isPositiveState)
-        {
-            playerTargetEulerAngles = playerAnglesStatePositive;
-            //Restore orb-crossing bolt colors to new state
-            foreach (GameObject bolt in lightning.orbCrossers)
+            if (!bl_isFlipping)
             {
-                LineRenderer lightningRenderer = bolt.GetComponent<LineRenderer>();
-                lightningRenderer.material = new Material(lightningRenderer.material);
-                bolt.GetComponent<LightningBoltScript>().updateRenderColors(lightning.positiveStateColor, lightning.positiveStateColor);
-                bolt.GetComponent<LightningBoltScript>().UpdateFromMaterialChange();
-                bolt.transform.position = new Vector3(bolt.transform.position.x, bolt.transform.position.y, -bolt.transform.position.z);
-                //lightningRenderer.startColor = lightning.positiveStateColor;
-                //lightningRenderer.endColor = lightning.positiveStateColor;
+                //Flip has been broken (probably by a reset). 
+                break;
             }
-
         }
-        else
+        if (bl_isFlipping)
         {
-            playerTargetEulerAngles = playerAnglesStateNegative;
-            foreach (GameObject bolt in lightning.orbCrossers)
+            if (bl_isPositiveState)
             {
-                LineRenderer lightningRenderer = bolt.GetComponent<LineRenderer>();
-                lightningRenderer.material = new Material(lightningRenderer.material);
-                bolt.GetComponent<LightningBoltScript>().updateRenderColors(lightning.negativeStateColor, lightning.negativeStateColor);
-                bolt.GetComponent<LightningBoltScript>().UpdateFromMaterialChange();
-                bolt.transform.position = new Vector3(bolt.transform.position.x, bolt.transform.position.y, -bolt.transform.position.z);
-                //lightningRenderer.startColor = lightning.negativeStateColor;
-                //lightningRenderer.endColor = lightning.negativeStateColor;
+                playerTargetEulerAngles = playerAnglesStatePositive;
+                //Restore orb-crossing bolt colors to new state
+                foreach (GameObject bolt in lightning.orbCrossers)
+                {
+                    bolt.GetComponent<LightningBoltScript>().updateRenderColors(lightning.positiveStateColor, lightning.positiveStateColor);
+                    bolt.GetComponent<LightningBoltScript>().UpdateFromMaterialChange();
+                    bolt.transform.position = new Vector3(bolt.transform.position.x, bolt.transform.position.y, 0.3f);
+                }
+
+            }
+            else
+            {
+                playerTargetEulerAngles = playerAnglesStateNegative;
+                foreach (GameObject bolt in lightning.orbCrossers)
+                {
+                    bolt.GetComponent<LightningBoltScript>().updateRenderColors(lightning.negativeStateColor, lightning.negativeStateColor);
+                    bolt.GetComponent<LightningBoltScript>().UpdateFromMaterialChange();
+                    bolt.transform.position = new Vector3(bolt.transform.position.x, bolt.transform.position.y, 0.3f);
+                }
             }
         }
         int_flipFrames = 0;
@@ -131,10 +118,17 @@ public class PlayerController : MonoBehaviour {
         fl_playerSpeed = 0;
 
         PlayerTransform = transform; //gameObject.GetComponent<Transform>();
-        playerTargetEulerAngles = PlayerTransform.eulerAngles;
+                                     //resets the player's world rotation to 0
+        playerTargetEulerAngles = playerAnglesStatePositive;
         PlayerTransform.eulerAngles = playerTargetEulerAngles;
         playerAnglesStatePositive = playerTargetEulerAngles;
         playerAnglesStateNegative = playerTargetEulerAngles + new Vector3(0, 180, 0);
+        foreach (GameObject bolt in lightning.orbCrossers)
+        {
+            bolt.GetComponent<LightningBoltScript>().updateRenderColors(lightning.positiveStateColor, lightning.positiveStateColor);
+            bolt.GetComponent<LightningBoltScript>().UpdateFromMaterialChange();
+            bolt.transform.position = new Vector3(bolt.transform.position.x, bolt.transform.position.y, -0.3f);
+        }
 
         bl_isFlipping = false;
         bl_isFlipAxisInUse = false;
@@ -153,15 +147,11 @@ public class PlayerController : MonoBehaviour {
             Color lightningSetColor = bl_isPositiveState ? lightning.positiveStateColor : lightning.negativeStateColor;
             foreach (GameObject bolt in lightning.orbSurrounders)
             {
-                LineRenderer lightningRenderer = bolt.GetComponent<LineRenderer>();
-                lightningRenderer.material = new Material(lightningRenderer.material);
                 bolt.GetComponent<LightningBoltScript>().updateRenderColors(lightningSetColor, lightningSetColor);
                 bolt.GetComponent<LightningBoltScript>().UpdateFromMaterialChange();
             }
             foreach (GameObject bolt in lightning.orbCrossers)
             {
-                LineRenderer lightningRenderer = bolt.GetComponent<LineRenderer>();
-                lightningRenderer.material = new Material(lightningRenderer.material);
                 bolt.GetComponent<LightningBoltScript>().updateRenderColors(lightningSetColor, lightningSetColor);
                 bolt.GetComponent<LightningBoltScript>().UpdateFromMaterialChange();
             }
